@@ -134,6 +134,15 @@ nav.scrolled{background:rgba(28,34,43,.97);backdrop-filter:blur(14px);box-shadow
 .cat-entry-card p{font-size:.86rem;color:var(--tx3);line-height:1.65}
 .cat-entry-arrow{margin-top:4px;color:var(--te2);font-size:.82rem;font-weight:700}
 @media(max-width:620px){.cat-entry{grid-template-columns:1fr}}
+.diff-box{display:flex;border-radius:12px;overflow:hidden;border:1px solid var(--borde2);margin:0 0 16px}
+.diff-col{flex:1;padding:20px 22px;display:flex;flex-direction:column;gap:6px}
+.diff-keto{background:rgba(156,51,39,.16)}
+.diff-salud{background:rgba(86,57,31,.4)}
+.diff-tag{font-size:.64rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--te2)}
+.diff-col strong{font-family:'Playfair Display',serif;font-size:1.02rem;color:var(--cr);font-weight:700;line-height:1.35}
+.diff-divider{display:flex;align-items:center;justify-content:center;padding:0 16px;font-family:'Playfair Display',serif;font-style:italic;font-weight:700;color:var(--tx3);font-size:.86rem;background:var(--ng3);flex:none}
+.diff-note{font-size:.82rem;color:var(--tx3);line-height:1.65;max-width:62ch;margin-bottom:32px}
+@media(max-width:620px){.diff-box{flex-direction:column}.diff-divider{padding:10px}}
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .pcard{background:var(--ng2);border:1px solid var(--borde2);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative}
 .pcard:hover{border-color:rgba(156,51,39,.35);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
@@ -268,6 +277,18 @@ body.loaded .hero-right{animation:up .9s .28s ease both;opacity:0}
       <span class="ctoggle act" style="cursor:default">Productos Keto</span>
       <a class="ctoggle" href="saludables.html">Productos Saludables</a>
     </div>
+    <div class="diff-box reveal">
+      <div class="diff-col diff-keto">
+        <span class="diff-tag">Keto</span>
+        <strong>Harina de almendras 100% pura</strong>
+      </div>
+      <div class="diff-divider">VS</div>
+      <div class="diff-col diff-salud">
+        <span class="diff-tag">Saludable</span>
+        <strong>Harina de almendras con 70% de pureza</strong>
+      </div>
+    </div>
+    <p class="diff-note reveal">¿Cuál es la diferencia entre un producto Keto y uno Saludable? La única diferencia en la materia prima es la pureza de la harina de almendras — el resto de la receta y el proceso de elaboración es exactamente el mismo.</p>
     <div class="cat-tabs reveal" role="tablist">
       <button class="ctab act" data-cat="panes" type="button">Panes y Salados</button>
       <button class="ctab" data-cat="almuerzo" type="button">Para tu Almuerzo</button>
