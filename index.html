@@ -119,42 +119,28 @@ nav.scrolled{background:rgba(28,34,43,.97);backdrop-filter:blur(14px);box-shadow
 
 /* ── CATÁLOGO ── */
 .catalogo{padding:88px 0;background:var(--br2)}
-.cat-toggle{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
-.ctoggle{padding:12px 24px;border-radius:8px;background:var(--ng2);border:1px solid var(--borde2);font-family:'Inter',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;color:var(--tx2);transition:.2s}
-.ctoggle:hover{border-color:rgba(156,51,39,.35);color:var(--tx)}
-.ctoggle.act{background:var(--te);color:#fff;border-color:var(--te);box-shadow:0 4px 14px rgba(156,51,39,.35)}
 .cat-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 32px;background:var(--ng2);padding:8px;border-radius:10px;border:1px solid var(--borde2)}
 .ctab{display:inline-flex;align-items:center;padding:10px 18px;border-radius:7px;background:none;border:none;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;color:var(--tx3);transition:.2s;white-space:nowrap}
 .ctab:hover{color:var(--tx);background:var(--ng3)}
 .ctab.act{background:var(--te);color:#fff;box-shadow:0 4px 14px rgba(156,51,39,.35)}
-.cat-entry{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:36px 0 40px}
-.cat-entry-card{display:flex;flex-direction:column;gap:10px;padding:28px 26px;border-radius:12px;border:1px solid var(--borde2);background:var(--ng2);transition:.25s}
-.cat-entry-card:hover{border-color:rgba(156,51,39,.4);transform:translateY(-3px);box-shadow:0 14px 32px rgba(0,0,0,.35)}
-.cat-entry-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--cr)}
-.cat-entry-card p{font-size:.86rem;color:var(--tx3);line-height:1.65}
-.cat-entry-arrow{margin-top:4px;color:var(--te2);font-size:.82rem;font-weight:700}
-@media(max-width:620px){.cat-entry{grid-template-columns:1fr}}
-.diff-box{display:flex;border-radius:12px;overflow:hidden;border:1px solid var(--borde2);margin:0 0 16px}
-.diff-col{flex:1;padding:20px 22px;display:flex;flex-direction:column;gap:6px}
-.diff-keto{background:rgba(156,51,39,.16)}
-.diff-salud{background:rgba(86,57,31,.4)}
-.diff-tag{font-size:.64rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--te2)}
-.diff-col strong{font-family:'Playfair Display',serif;font-size:1.02rem;color:var(--cr);font-weight:700;line-height:1.35}
-.diff-divider{display:flex;align-items:center;justify-content:center;padding:0 16px;font-family:'Playfair Display',serif;font-style:italic;font-weight:700;color:var(--tx3);font-size:.86rem;background:var(--ng3);flex:none}
-.diff-note{font-size:.82rem;color:var(--tx3);line-height:1.65;max-width:62ch;margin-bottom:32px}
-@media(max-width:620px){.diff-box{flex-direction:column}.diff-divider{padding:10px}}
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .pcard{background:var(--ng2);border:1px solid var(--borde2);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative}
 .pcard:hover{border-color:rgba(156,51,39,.35);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
 .pcard-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--ng3)}
-.pcard-body{padding:18px 18px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pcard-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
 .pcard-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .pcard-name{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:700;color:var(--cr);line-height:1.3;flex:1}
-.pcard-price{font-size:1.05rem;font-weight:700;color:var(--te2);white-space:nowrap;font-family:'Playfair Display',serif}
-.pcard-actions{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap}
-.btn-consultar{flex:1;justify-content:center;padding:9px 14px;font-size:.8rem;border-radius:6px;background:rgba(156,51,39,.12);border:1px solid rgba(156,51,39,.25);color:var(--te2);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s;display:flex;align-items:center;gap:6px}
-.btn-consultar:hover{background:var(--te);color:#fff;border-color:var(--te)}
-.btn-consultar svg{width:13px;height:13px;fill:currentColor;flex:none}
+.pcard-variants{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pcard-variants.single{grid-template-columns:1fr}
+.variant-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 8px;border-radius:8px;border:1px solid transparent;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s;text-align:center}
+.variant-keto{background:rgba(156,51,39,.14);border-color:rgba(156,51,39,.3)}
+.variant-keto:hover{background:var(--te);border-color:var(--te)}
+.variant-keto:hover .variant-label,.variant-keto:hover .variant-price,.variant-keto:hover .variant-desc{color:#fff}
+.variant-salud{background:rgba(86,57,31,.4);border-color:rgba(86,57,31,.6)}
+.variant-salud:hover{background:var(--br);border-color:var(--br)}
+.variant-label{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--te2)}
+.variant-price{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--cr)}
+.variant-desc{font-size:.6rem;color:var(--tx3);line-height:1.3}
 @media(max-width:860px){.prod-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:500px){.prod-grid{grid-template-columns:1fr}}
 
@@ -368,32 +354,13 @@ body.loaded .hero-right{animation:up .9s .28s ease both;opacity:0}
     <div class="sec-head reveal" style="max-width:580px">
       <div class="eyebrow">Nuestro catálogo</div>
       <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);color:var(--cr);margin-top:14px">Todo lo que tenemos para vos</h2>
-      <p style="color:var(--tx2);font-size:.92rem;margin-top:10px;font-weight:300">Hacé clic en <strong style="color:var(--te2)">Consultar</strong> en el producto que te interese y te respondemos por WhatsApp.</p>
+      <p style="color:var(--tx2);font-size:.92rem;margin-top:10px;font-weight:300">Elegí la versión <strong style="color:var(--te2)">Keto</strong> o <strong style="color:var(--te2)">Saludable</strong> de cada producto y te respondemos por WhatsApp.</p>
     </div>
-    <div class="cat-entry reveal">
-      <a class="cat-entry-card" href="keto.html">
-        <h3>Productos Keto</h3>
-        <p>Panes, almuerzos y postres sin harinas y sin azúcar, aptos para diabéticos.</p>
-        <span class="cat-entry-arrow">Ver catálogo keto →</span>
-      </a>
-      <a class="cat-entry-card" href="saludables.html">
-        <h3>Productos Saludables</h3>
-        <p>Nuestra selección de panes, almuerzos y postres saludables.</p>
-        <span class="cat-entry-arrow">Ver catálogo saludable →</span>
-      </a>
+    <div class="cat-tabs reveal" role="tablist">
+      <button class="ctab act" data-cat="panes" type="button">Panes y Salados</button>
+      <button class="ctab" data-cat="almuerzo" type="button">Para tu Almuerzo</button>
+      <button class="ctab" data-cat="dulces" type="button">Postres y Dulces</button>
     </div>
-    <div class="diff-box reveal">
-      <div class="diff-col diff-keto">
-        <span class="diff-tag">Keto</span>
-        <strong>Harina de almendras 100% pura</strong>
-      </div>
-      <div class="diff-divider">VS</div>
-      <div class="diff-col diff-salud">
-        <span class="diff-tag">Saludable</span>
-        <strong>Harina de almendras con 70% de pureza</strong>
-      </div>
-    </div>
-    <p class="diff-note reveal">¿Cuál es la diferencia entre un producto Keto y uno Saludable? La única diferencia en la materia prima es la pureza de la harina de almendras — el resto de la receta y el proceso de elaboración es exactamente el mismo.</p>
     <div class="prod-grid" id="prodGrid"></div>
   </div>
 </section>
@@ -515,7 +482,7 @@ body.loaded .hero-right{animation:up .9s .28s ease both;opacity:0}
       </div>
       <div class="ft-col">
         <h5>Productos</h5>
-        <a href="keto.html">Productos Keto</a><a href="saludables.html">Productos Saludables</a>
+        <a href="#catalogo">Panes y Salados</a><a href="#catalogo">Para tu Almuerzo</a><a href="#catalogo">Postres y Dulces</a>
       </div>
       <div class="ft-col">
         <h5>Contacto</h5>
@@ -541,70 +508,74 @@ body.loaded .hero-right{animation:up .9s .28s ease both;opacity:0}
 <script>
 // ── PRODUCTOS DATA
 const PRODS = {
-  general:[
-    {n:'Pan de lino',p:'$14.000',img:'images/pan-de-lino.jpg'},
-    {n:'Pan de almendras y muzarella',p:'$13.500',img:'images/pan-de-almendras-y-muzarella.jpg'},
-    {n:'Pan clásico',p:'$13.500',img:'images/pan-clasico.jpg'},
-    {n:'Pancitos saborizados',p:'3x $4.500',img:'images/pancitos-saborizados.jpg'},
-    {n:'Pan de hamburguesa',p:'4x $7.500',img:'images/pan-de-hamburguesa.jpg'},
-    {n:'Pan nube',p:'6x $6.500',img:'images/pan-nube.jpg'},
-    {n:'Prepizza',p:'$6.000',img:'images/prepizza.jpg'},
-    {n:'Pizetas',p:'x4 — $4.500',img:'images/pizetas.jpg'},
-    {n:'Crackers',p:'x10 — $4.500',img:'images/crackers.jpg'},
-    {n:'Bizcochos',p:'x10 — $4.500',img:'images/bizcochos.jpg'},
-    {n:'Talitas saborizadas',p:'x5 — $4.500',img:'images/talitas-saborizadas.jpg'},
-    {n:'Canastitas de pollo o carne keto',p:'x3 — $12.000',img:'images/empanadas-pollo.jpg'},
-    {n:'Canastitas de pollo o carne',p:'x6 — $23.000',img:'images/empanadas-pollo.jpg'},
-    {n:'Canastitas caprese',p:'x6 — $10.000',img:'images/caprese.jpg'},
-    {n:'Canastitas brócoli',p:'x6 — $10.000',img:'images/empanadas-brocoli.jpg'},
-    {n:'Tarta de espinaca',p:'$14.000',img:'images/tarta-de-espinaca.jpg'},
-    {n:'Tarta de jamón y queso',p:'$17.000',img:'images/tarta-jamon-queso.jpg'},
-    {n:'Tarta tricolor',p:'$15.000',img:'images/tarta-tricolor.jpg'},
-    {n:'Tarta de atún',p:'$17.000',img:'images/tarta-de-atun.jpg'},
-    {n:'Ñoquis',p:'$11.000',img:'images/noquis.jpg'},
-    {n:'Fideos de almendras',p:'x400g — $10.000',img:'images/fideos-de-almendras.jpg'},
-    {n:'Sorrentinos de ricotta',p:'x12 — $12.000',img:'images/sorrentinos-ricotta.jpg'},
-    {n:'Sorrentinos de jamón y queso',p:'x12 — $12.000',img:'images/sorrentinos-jamon-queso.jpg'},
-    {n:'Torta salada',p:'$44.500',img:'images/torta-salada.jpg'},
-    {n:'Budín de vainilla',p:'$10.000',img:'images/budin-vainilla.jpg'},
-    {n:'Budín de chocolate',p:'$10.000',img:'images/budin-chocolate.jpg'},
-    {n:'Budín de limón',p:'$10.500',img:'images/budin-limon.jpg'},
-    {n:'Budín de arándanos',p:'$10.500',img:'images/budin-arandanos.jpg'},
-    {n:'Galleta de almendras',p:'$1.300',img:'images/galleta-de-almendras.jpg'},
-    {n:'Conitos',p:'$4.500',img:'images/conitos.jpg'},
-    {n:'Cocadas',p:'x2 — $2.200'},
-    {n:'Pepas saludables',p:'x3 — $2.300',img:'images/pepas.jpg'},
-    {n:'Alfajor marino',p:'$4.200'},
-    {n:'Alfajor corazón',p:'$4.200'},
-    {n:'Tubo',p:'$4.500',img:'images/tubo.jpg'},
-    {n:'Alfajor de chocolate (dulce de leche, frutos rojos o marroc)',p:'$4.500',img:'images/alfajor-chocolate.jpg'},
-    {n:'Alfajor tipo maicena',p:'$3.000',img:'images/alfajor-maicena.jpg'},
-    {n:'Almendrado',p:'$3.800',img:'images/almendrado.jpg'},
-    {n:'Havanna keto',p:'$3.200'},
-    {n:'Bariloche keto',p:'$3.200'},
-    {n:'Torta 1,5 kg bizcochelo',p:'$65.000',esp:true,img:'images/torta-bicolor.jpg'},
-    {n:'Torta sablée',p:'$42.000',esp:true,img:'images/torta-sablee.jpg'},
-    {n:'Lemon pie',p:'$30.000',esp:true,img:'images/lemon-pie.jpg'},
-    {n:'Tarta mediana Cabsha',p:'$34.000',esp:true,img:'images/tarta-mediana-cabsha.jpg'},
-    {n:'Cheesecake',p:'$32.000',esp:true},
-    {n:'Brownie con dulce de leche, crema y frutos rojos',p:'$45.000',esp:true,img:'images/brownie-frutos-rojos.jpg'},
-    {n:'Chocotorta',p:'$50.000',esp:true,img:'images/chocotorta.jpg'},
-    {n:'Minitarta Cabsha',p:'$7.000',img:'images/minitarta-cabsha.jpg'},
-    {n:'Minitarta lemon',p:'$5.500'},
-    {n:'Minitarta frutilla',p:'$4.000'},
-    {n:'Minifrola',p:'$6.000',img:'images/minifrola.jpg'},
-    {n:'Porción de limón',p:'$3.000'},
-    {n:'Porción de Brownie',p:'$4.000'},
+  panes:[
+    {n:'Pan de lino',pk:'$14.000',ps:'$14.000',img:'images/pan-de-lino.jpg'},
+    {n:'Pan de almendras y muzarella',pk:'$13.500',ps:'$13.500',img:'images/pan-de-almendras-y-muzarella.jpg'},
+    {n:'Pan clásico',pk:'$13.500',ps:'$13.500',img:'images/pan-clasico.jpg'},
+    {n:'Pancitos saborizados',pk:'3x $4.500',img:'images/pancitos-saborizados.jpg'},
+    {n:'Pan de hamburguesa',pk:'4x $7.500',ps:'4x $6.000',img:'images/pan-de-hamburguesa.jpg'},
+    {n:'Pan nube',pk:'6x $6.500',ps:'6x $6.500',img:'images/pan-nube.jpg'},
+    {n:'Prepizza',pk:'$6.000',ps:'$6.000',img:'images/prepizza.jpg'},
+    {n:'Pizetas',pk:'x4 — $4.500',ps:'x4 — $4.500',img:'images/pizetas.jpg'},
+    {n:'Crackers',pk:'x10 — $4.500',ps:'x10 — $3.500',img:'images/crackers.jpg'},
+    {n:'Bizcochos',pk:'x10 — $4.500',ps:'x10 — $3.500',img:'images/bizcochos.jpg'},
+    {n:'Talitas saborizadas',pk:'x5 — $4.500',ps:'x5 — $3.500',img:'images/talitas-saborizadas.jpg'},
+    {n:'Galleta de almendras',pk:'$1.300',ps:'$1.300',img:'images/galleta-de-almendras.jpg'},
+    {n:'Conitos',pk:'$4.500',ps:'$3.500',img:'images/conitos.jpg'},
+  ],
+  almuerzo:[
+    {n:'Canastitas de pollo o carne keto',pk:'x3 — $12.000',ps:'x3 — $12.000',img:'images/empanadas-pollo.jpg'},
+    {n:'Canastitas de pollo o carne',pk:'x6 — $23.000',ps:'x6 — $23.000',img:'images/empanadas-pollo.jpg'},
+    {n:'Canastitas caprese',pk:'x6 — $10.000',ps:'x6 — $10.000',img:'images/caprese.jpg'},
+    {n:'Canastitas brócoli',pk:'x6 — $10.000',ps:'x6 — $10.000',img:'images/empanadas-brocoli.jpg'},
+    {n:'Tarta de espinaca',pk:'$14.000',ps:'$14.000',img:'images/tarta-de-espinaca.jpg'},
+    {n:'Tarta de jamón y queso',pk:'$17.000',ps:'$15.000',img:'images/tarta-jamon-queso.jpg'},
+    {n:'Tarta tricolor',pk:'$15.000',ps:'$15.000',img:'images/tarta-tricolor.jpg'},
+    {n:'Tarta de atún',pk:'$17.000',ps:'$17.000',img:'images/tarta-de-atun.jpg'},
+    {n:'Ñoquis',pk:'$11.000',ps:'$11.000',img:'images/noquis.jpg'},
+    {n:'Fideos de almendras',pk:'x400g — $10.000',ps:'x400g — $10.000',img:'images/fideos-de-almendras.jpg'},
+    {n:'Sorrentinos de ricotta',pk:'x12 — $12.000',ps:'x12 — $10.000',img:'images/sorrentinos-ricotta.jpg'},
+    {n:'Sorrentinos de jamón y queso',pk:'x12 — $12.000',ps:'x12 — $10.000',img:'images/sorrentinos-jamon-queso.jpg'},
+    {n:'Torta salada',pk:'$44.500',ps:'$44.500',img:'images/torta-salada.jpg'},
+  ],
+  dulces:[
+    {n:'Budín de vainilla',pk:'$10.000',ps:'$10.000',img:'images/budin-vainilla.jpg'},
+    {n:'Budín de chocolate',pk:'$10.000',ps:'$10.000',img:'images/budin-chocolate.jpg'},
+    {n:'Budín de limón',pk:'$10.500',ps:'$10.500',img:'images/budin-limon.jpg'},
+    {n:'Budín de arándanos',pk:'$10.500',ps:'$10.500',img:'images/budin-arandanos.jpg'},
+    {n:'Cocadas',pk:'x2 — $2.200',ps:'x2 — $2.200'},
+    {n:'Pepas saludables',pk:'x3 — $2.300',ps:'x3 — $2.300',img:'images/pepas.jpg'},
+    {n:'Alfajor marino',pk:'$4.200',ps:'$4.200'},
+    {n:'Alfajor corazón',pk:'$4.200',ps:'$4.200'},
+    {n:'Tubo',pk:'$4.500',ps:'$3.500',img:'images/tubo.jpg'},
+    {n:'Alfajor de chocolate (dulce de leche, frutos rojos o marroc)',pk:'$4.500',ps:'$3.500',img:'images/alfajor-chocolate.jpg'},
+    {n:'Alfajor tipo maicena',pk:'$3.000',ps:'$3.000',img:'images/alfajor-maicena.jpg'},
+    {n:'Almendrado',pk:'$3.800',ps:'$3.200',img:'images/almendrado.jpg'},
+    {n:'Havanna keto',pk:'$3.200',ps:'$3.200'},
+    {n:'Bariloche keto',pk:'$3.200',ps:'$3.200'},
+    {n:'Torta 1,5 kg bizcochelo',pk:'$65.000',ps:'$65.000',esp:true,img:'images/torta-bicolor.jpg'},
+    {n:'Torta sablée',pk:'$42.000',ps:'$39.000',esp:true,img:'images/torta-sablee.jpg'},
+    {n:'Lemon pie',pk:'$30.000',ps:'$27.000',esp:true,img:'images/lemon-pie.jpg'},
+    {n:'Tarta mediana Cabsha',pk:'$34.000',ps:'$34.000',esp:true,img:'images/tarta-mediana-cabsha.jpg'},
+    {n:'Cheesecake',pk:'$32.000',ps:'$32.000',esp:true},
+    {n:'Brownie con dulce de leche, crema y frutos rojos',pk:'$45.000',ps:'$40.000',esp:true,img:'images/brownie-frutos-rojos.jpg'},
+    {n:'Chocotorta',pk:'$50.000',ps:'$45.000',esp:true,img:'images/chocotorta.jpg'},
+    {n:'Minitarta Cabsha',pk:'$7.000',ps:'$6.000',img:'images/minitarta-cabsha.jpg'},
+    {n:'Minitarta lemon',pk:'$5.500',ps:'$5.500'},
+    {n:'Minitarta frutilla',pk:'$4.000',ps:'$4.000'},
+    {n:'Minifrola',pk:'$6.000',ps:'$5.000',img:'images/minifrola.jpg'},
+    {n:'Porción de limón',pk:'$3.000',ps:'$3.000'},
+    {n:'Porción de Brownie',pk:'$4.000',ps:'$4.000'},
   ],
 };
 
 const WA = '5493853113831';
-let activeCat = 'general';
+let activeCat = 'panes';
 
-function consultarProd(nombre, especial){
+function consultarProd(nombre, variante, precio, especial){
   const msg = especial
-    ? `Hola El Olmo Keto! 👋 Quiero hacer un pedido especial de *${nombre}*. Me gustaría coordinar con 48 hs de anticipación. ¿Me pueden ayudar?`
-    : `Hola El Olmo Keto! 👋 Me interesa el/la *${nombre}*. ¿Está disponible? ¿Cuándo podría pasar a buscarlo?`;
+    ? `Hola El Olmo Keto! 👋 Quiero hacer un pedido especial de *${nombre}* (versión ${variante} — ${precio}). Me gustaría coordinar con 48 hs de anticipación. ¿Me pueden ayudar?`
+    : `Hola El Olmo Keto! 👋 Me interesa el/la *${nombre}* (versión ${variante} — ${precio}). ¿Está disponible? ¿Cuándo podría pasar a buscarlo?`;
   window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
 }
 
@@ -614,20 +585,28 @@ function renderProds(cat){
   (PRODS[cat]||[]).forEach(p=>{
     const d = document.createElement('div');
     d.className = 'pcard';
+    const nEsc = p.n.replace(/'/g,"\\'");
+    const ketoBtn = p.pk ? `
+          <button class="variant-btn variant-keto" onclick="consultarProd('${nEsc}','Keto','${p.pk}',${p.esp||false})">
+            <span class="variant-label">Keto</span>
+            <span class="variant-price">${p.pk}</span>
+            <span class="variant-desc">Harina de almendras 100% pura</span>
+          </button>` : '';
+    const saludBtn = p.ps ? `
+          <button class="variant-btn variant-salud" onclick="consultarProd('${nEsc}','Saludable','${p.ps}',${p.esp||false})">
+            <span class="variant-label">Saludable</span>
+            <span class="variant-price">${p.ps}</span>
+            <span class="variant-desc">Harina de almendras con 70% de pureza</span>
+          </button>` : '';
+    const variantsClass = (p.pk && p.ps) ? 'pcard-variants' : 'pcard-variants single';
     d.innerHTML = `
       ${p.img ? `<img class="pcard-img" src="${p.img}" alt="${p.n}" loading="lazy">` : ''}
       <div class="pcard-body">
         <div class="pcard-top">
           <span class="pcard-name">${p.n}</span>
-          <span class="pcard-price">${p.p}</span>
         </div>
         ${p.esp ? '<div><span class="badge-48">⏰ 48 hs anticipación</span></div>' : ''}
-        <div class="pcard-actions">
-          <button class="btn-consultar" onclick="consultarProd('${p.n.replace(/'/g,"\\'")}',${p.esp||false})">
-            <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.3 4 14.9c0 2.6.8 5 2.3 7L4 29l7.3-2.3c1.9 1 4 1.6 6.2 1.6h.5c6.6 0 12-5.3 12-11.9S22.6 3 16 3z"/></svg>
-            Consultar
-          </button>
-        </div>
+        <div class="${variantsClass}">${ketoBtn}${saludBtn}</div>
       </div>`;
     grid.appendChild(d);
   });
@@ -640,6 +619,13 @@ function enviarConsulta(){
   const msg = `Hola El Olmo Keto! 👋 Consulta desde el sitio web:\n\n👤 Nombre: ${n||'(sin especificar)'}\n🛒 Producto: ${p||'(sin especificar)'}\n📝 Mensaje: ${m||'(sin mensaje)'}`;
   window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
 }
+
+document.querySelectorAll('.ctab[data-cat]').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.ctab[data-cat]').forEach(x=>x.classList.remove('act'));
+  t.classList.add('act');
+  activeCat = t.dataset.cat;
+  renderProds(activeCat);
+}));
 
 // Ticker loop
 const tk = document.getElementById('ticker');
