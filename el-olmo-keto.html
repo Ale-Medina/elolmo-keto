@@ -221,6 +221,43 @@ body.loaded .hero-btns{animation:up .8s .44s ease forwards}
 body.loaded .hero-right{animation:up .9s .28s ease both;opacity:0}
 @keyframes up{to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.reveal,.wa-ring{animation:none;opacity:1;transform:none;transition:none}.hero-logo-wrap,.hero h1,.hero-sub,.hero-tags,.hero-btns,.hero-right{opacity:1;transform:none;animation:none}}
+/* CARRITO */
+.cart-fab{position:fixed;left:20px;bottom:20px;z-index:90;display:flex;align-items:center;gap:10px;padding:14px 20px;border-radius:50px;border:none;background:var(--te);color:#fff;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;box-shadow:0 10px 26px rgba(156,51,39,.45);transition:transform .2s,background .2s}
+.cart-fab:hover{transform:scale(1.05);background:var(--te2)}
+.cart-fab svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cart-count{background:#fff;color:var(--te);border-radius:50px;min-width:22px;height:22px;padding:0 6px;display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
+.cart-fab.bump{animation:bump .35s}
+@keyframes bump{50%{transform:scale(1.15)}}
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:150;opacity:0;pointer-events:none;transition:opacity .25s}
+.cart-overlay.open{opacity:1;pointer-events:auto}
+.cart-panel{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--ng2);border-left:1px solid var(--borde);z-index:160;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s}
+.cart-panel.open{transform:none}
+.cart-head{display:flex;justify-content:space-between;align-items:center;padding:20px;border-bottom:1px solid var(--borde)}
+.cart-head h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--cr)}
+.cart-close{background:none;border:none;color:var(--tx2);font-size:1.8rem;line-height:1;cursor:pointer}
+.cart-items{flex:1;overflow-y:auto;padding:12px 20px}
+.cart-empty{color:var(--tx2);text-align:center;padding:40px 10px;font-size:.9rem}
+.cart-item{display:flex;gap:12px;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--borde2)}
+.ci-info{flex:1;min-width:0}
+.ci-name{color:var(--cr);font-size:.92rem;font-weight:600;line-height:1.3}
+.ci-meta{color:var(--tx3);font-size:.72rem;margin-top:2px}
+.ci-price{color:var(--tx2);font-size:.8rem;margin-top:4px}
+.ci-qty{display:flex;align-items:center;gap:8px}
+.ci-qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--borde);background:var(--ng3);color:var(--cr);font-size:1rem;cursor:pointer}
+.ci-qty button:hover{background:var(--te);border-color:var(--te)}
+.ci-qty span{min-width:18px;text-align:center;color:var(--cr);font-weight:600;font-size:.9rem}
+.cart-foot{padding:18px 20px 22px;border-top:1px solid var(--borde);display:flex;flex-direction:column;gap:12px}
+.cart-ship{font-size:.82rem;line-height:1.4;padding:10px 12px;border-radius:8px;background:rgba(245,237,216,.06);color:var(--tx2)}
+.cart-ship.free{background:rgba(37,211,102,.15);color:#6EE7A0;font-weight:700;text-align:center;font-size:.9rem}
+.cart-bar{height:6px;border-radius:6px;background:var(--ng4);margin-top:8px;overflow:hidden}
+.cart-bar i{display:block;height:100%;background:var(--te2);transition:width .3s}
+.cart-total{display:flex;justify-content:space-between;align-items:baseline;color:var(--cr)}
+.cart-total strong{font-family:'Playfair Display',serif;font-size:1.5rem}
+.cart-send{background:#25D366;color:#fff;border:none;border-radius:10px;padding:14px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer}
+.cart-send:disabled{opacity:.4;cursor:not-allowed}
+.cart-clear{background:none;border:none;color:var(--tx3);font-size:.78rem;cursor:pointer;text-decoration:underline}
+.cart-toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--ng);color:var(--cr);border:1px solid var(--borde);padding:10px 18px;border-radius:50px;font-size:.85rem;z-index:170;opacity:0;pointer-events:none;transition:.25s;max-width:90vw;text-align:center}
+.cart-toast.show{opacity:1;transform:translate(-50%,0)}
 </style>
 </head>
 <body>
@@ -505,6 +542,24 @@ body.loaded .hero-right{animation:up .9s .28s ease both;opacity:0}
   <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.3 4 14.9c0 2.6.8 5 2.3 7L4 29l7.3-2.3c1.9 1 4 1.6 6.2 1.6h.5c6.6 0 12-5.3 12-11.9S22.6 3 16 3zm5.9 16.9c-.3.8-1.5 1.5-2.4 1.7-.6.1-1.4.2-4.1-.9-3.5-1.4-5.7-4.9-5.9-5.2-.2-.2-1.4-1.9-1.4-3.6s.9-2.5 1.2-2.9c.3-.3.7-.4.9-.4h.7c.2 0 .5-.1.8.6.3.8 1 2.6 1.1 2.8.1.2.2.4 0 .7-.1.2-.2.4-.4.6l-.6.7c-.2.2-.4.4-.2.8.2.4 1 1.7 2.2 2.7 1.5 1.3 2.8 1.7 3.2 1.9.4.2.6.2.8-.1.2-.2 1-1.1 1.2-1.5.3-.4.5-.3.9-.2.4.1 2.4 1.1 2.8 1.3.4.2.7.3.8.5.1.2.1 1-.2 1.5z"/></svg>
 </a>
 
+<!-- CARRITO -->
+<button class="cart-fab" id="cartFab" onclick="toggleCart(true)" aria-label="Ver carrito">
+  <svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.4a2 2 0 0 0 2 1.6h8.1a2 2 0 0 0 2-1.5L21 8H6"/></svg>
+  Mi pedido <span class="cart-count" id="cartCount">0</span>
+</button>
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart(false)"></div>
+<aside class="cart-panel" id="cartPanel" aria-label="Carrito de compras">
+  <div class="cart-head"><h3>Mi pedido</h3><button class="cart-close" onclick="toggleCart(false)" aria-label="Cerrar">&times;</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-ship" id="cartShip"></div>
+    <div class="cart-total"><span>Total</span><strong id="cartTotal">$0</strong></div>
+    <button class="cart-send" id="cartSend" onclick="finalizarPedido()">Finalizar pedido por WhatsApp</button>
+    <button class="cart-clear" onclick="vaciarCarrito()">Vaciar carrito</button>
+  </div>
+</aside>
+<div class="cart-toast" id="cartToast"></div>
+
 <script>
 // ── PRODUCTOS DATA
 const PRODS = {
@@ -575,12 +630,90 @@ const PRODS = {
 const WA = '5493853113831';
 let activeCat = 'panes';
 
-function consultarProd(nombre, variante, precio, especial){
-  const msg = especial
-    ? `Hola El Olmo Keto! 👋 Quiero hacer un pedido especial de *${nombre}* (versión ${variante} — ${precio}). Me gustaría coordinar con 48 hs de anticipación. ¿Me pueden ayudar?`
-    : `Hola El Olmo Keto! 👋 Me interesa el/la *${nombre}* (versión ${variante} — ${precio}). ¿Está disponible? ¿Cuándo podría pasar a buscarlo?`;
+// ── CARRITO
+const FREE_SHIP = 25000;
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem('elolmo_cart')||'[]'); } catch(e){ cart = []; }
+
+const fmt = n => '$' + n.toLocaleString('es-AR');
+const precioNum = s => parseInt(s.match(/\$\s*([\d.]+)/)[1].replace(/\./g,''),10);
+function saveCart(){ try { localStorage.setItem('elolmo_cart', JSON.stringify(cart)); } catch(e){} }
+
+function addCart(nombre, variante, precio, especial){
+  const key = nombre+'|'+variante+'|'+precio;
+  const it = cart.find(c=>c.key===key);
+  if(it) it.qty++; else cart.push({key, n:nombre, v:variante, label:precio, price:precioNum(precio), esp:especial, qty:1});
+  saveCart(); renderCart();
+  const fab = document.getElementById('cartFab');
+  fab.classList.remove('bump'); void fab.offsetWidth; fab.classList.add('bump');
+  showToast('✓ ' + nombre + ' (' + variante + ') agregado');
+}
+function changeQty(i, d){
+  const it = cart[i]; if(!it) return;
+  it.qty += d;
+  if(it.qty<=0) cart.splice(i,1);
+  saveCart(); renderCart();
+}
+function vaciarCarrito(){ cart = []; saveCart(); renderCart(); }
+function toggleCart(open){
+  document.getElementById('cartPanel').classList.toggle('open',open);
+  document.getElementById('cartOverlay').classList.toggle('open',open);
+}
+let toastT;
+function showToast(t){
+  const el = document.getElementById('cartToast');
+  el.textContent = t; el.classList.add('show');
+  clearTimeout(toastT); toastT = setTimeout(()=>el.classList.remove('show'),1800);
+}
+function renderCart(){
+  const total = cart.reduce((s,c)=>s+c.price*c.qty,0);
+  const count = cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartTotal').textContent = fmt(total);
+  document.getElementById('cartSend').disabled = !count;
+  const list = document.getElementById('cartItems');
+  list.innerHTML = count ? '' : '<div class="cart-empty">Todavía no agregaste productos.<br>Elegí la versión Keto o Saludable de cada producto para sumarlo.</div>';
+  cart.forEach((c,i)=>{
+    const d = document.createElement('div');
+    d.className = 'cart-item';
+    d.innerHTML = `
+      <div class="ci-info">
+        <div class="ci-name">${c.n}</div>
+        <div class="ci-meta">${c.v}${c.esp?' · ⏰ 48 hs de anticipación':''}</div>
+        <div class="ci-price">${c.label}</div>
+      </div>
+      <div class="ci-qty">
+        <button onclick="changeQty(${i},-1)" aria-label="Quitar uno">−</button>
+        <span>${c.qty}</span>
+        <button onclick="changeQty(${i},1)" aria-label="Agregar uno">+</button>
+      </div>`;
+    list.appendChild(d);
+  });
+  const ship = document.getElementById('cartShip');
+  if(!count){
+    ship.className = 'cart-ship';
+    ship.textContent = '🚚 Envío gratis en compras desde ' + fmt(FREE_SHIP);
+  } else if(total >= FREE_SHIP){
+    ship.className = 'cart-ship free';
+    ship.textContent = '🎉 ¡Superaste el monto! TENÉS ENVÍO GRATIS';
+  } else {
+    ship.className = 'cart-ship';
+    ship.innerHTML = '🚚 Te faltan <strong>' + fmt(FREE_SHIP-total) + '</strong> para el envío gratis<div class="cart-bar"><i style="width:' + Math.round(total/FREE_SHIP*100) + '%"></i></div>';
+  }
+}
+function finalizarPedido(){
+  if(!cart.length) return;
+  const total = cart.reduce((s,c)=>s+c.price*c.qty,0);
+  let msg = 'Hola El Olmo Keto! 👋 Quiero hacer este pedido:\n\n';
+  cart.forEach(c=>{ msg += `• ${c.qty} x ${c.n} (${c.v} — ${c.label}) = ${fmt(c.price*c.qty)}\n`; });
+  msg += `\n💰 Total: ${fmt(total)}`;
+  if(total >= FREE_SHIP) msg += ' (envío gratis 🚚)';
+  if(cart.some(c=>c.esp)) msg += '\n⏰ Incluye productos especiales que requieren 48 hs de anticipación.';
+  msg += '\n\n¿Está disponible? ¿Cuándo podría recibirlo/retirarlo?';
   window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
 }
+renderCart();
+
 
 function renderProds(cat){
   const grid = document.getElementById('prodGrid');
@@ -590,13 +723,13 @@ function renderProds(cat){
     d.className = 'pcard';
     const nEsc = p.n.replace(/'/g,"\\'");
     const ketoBtn = p.pk ? `
-          <button class="variant-btn variant-keto" onclick="consultarProd('${nEsc}','Keto','${p.pk}',${p.esp||false})">
+          <button class="variant-btn variant-keto" onclick="addCart('${nEsc}','Keto','${p.pk}',${p.esp||false})">
             <span class="variant-label">Keto</span>
             <span class="variant-price">${p.pk}</span>
             <span class="variant-desc">Harina de almendras 100% pura</span>
           </button>` : '';
     const saludBtn = p.ps ? `
-          <button class="variant-btn variant-salud" onclick="consultarProd('${nEsc}','Saludable','${p.ps}',${p.esp||false})">
+          <button class="variant-btn variant-salud" onclick="addCart('${nEsc}','Saludable','${p.ps}',${p.esp||false})">
             <span class="variant-label">Saludable</span>
             <span class="variant-price">${p.ps}</span>
             <span class="variant-desc">Harina de almendras con 70% de pureza</span>
