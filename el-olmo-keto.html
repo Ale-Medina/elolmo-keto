@@ -704,11 +704,11 @@ function renderCart(){
 function finalizarPedido(){
   if(!cart.length) return;
   const total = cart.reduce((s,c)=>s+c.price*c.qty,0);
-  let msg = 'Hola El Olmo Keto! 👋 Quiero hacer este pedido:\n\n';
-  cart.forEach(c=>{ msg += `• ${c.qty} x ${c.n} (${c.v} — ${c.label}) = ${fmt(c.price*c.qty)}\n`; });
-  msg += `\n💰 Total: ${fmt(total)}`;
-  if(total >= FREE_SHIP) msg += ' (envío gratis 🚚)';
-  if(cart.some(c=>c.esp)) msg += '\n⏰ Incluye productos especiales que requieren 48 hs de anticipación.';
+  let msg = 'Hola El Olmo Keto! Quiero hacer este pedido:\n\n';
+  cart.forEach(c=>{ msg += `- ${c.qty} x ${c.n} (${c.v} — ${c.label}) = ${fmt(c.price*c.qty)}\n`; });
+  msg += `\nTotal: ${fmt(total)}`;
+  if(total >= FREE_SHIP) msg += ' (envío gratis)';
+  if(cart.some(c=>c.esp)) msg += '\nIncluye productos especiales que requieren 48 hs de anticipación.';
   msg += '\n\n¿Está disponible? ¿Cuándo podría recibirlo/retirarlo?';
   window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
 }
@@ -752,7 +752,7 @@ function enviarConsulta(){
   const n = document.getElementById('cfNombre').value.trim();
   const p = document.getElementById('cfProducto').value;
   const m = document.getElementById('cfMsg').value.trim();
-  const msg = `Hola El Olmo Keto! 👋 Consulta desde el sitio web:\n\n👤 Nombre: ${n||'(sin especificar)'}\n🛒 Producto: ${p||'(sin especificar)'}\n📝 Mensaje: ${m||'(sin mensaje)'}`;
+  const msg = `Hola El Olmo Keto! Consulta desde el sitio web:\n\nNombre: ${n||'(sin especificar)'}\nProducto: ${p||'(sin especificar)'}\nMensaje: ${m||'(sin mensaje)'}`;
   window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
 }
 
