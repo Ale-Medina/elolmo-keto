@@ -130,6 +130,7 @@ nav.scrolled{background:rgba(28,34,43,.97);backdrop-filter:blur(14px);box-shadow
 .pcard-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
 .pcard-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .pcard-name{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:700;color:var(--cr);line-height:1.3;flex:1}
+.pcard-opt{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--borde);background:var(--ng3);color:var(--cr);font-family:'Inter',sans-serif;font-size:.85rem;cursor:pointer}
 .pcard-variants{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .pcard-variants.single{grid-template-columns:1fr}
 .variant-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 8px;border-radius:8px;border:1px solid transparent;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s;text-align:center}
@@ -603,14 +604,16 @@ const PRODS = {
     {n:'Budín de arándanos',pk:'$10.500',ps:'$10.500',img:'images/budin-arandanos.jpg'},
     {n:'Cocadas',pk:'x2u — $2.200',ps:'x2u — $2.200'},
     {n:'Pepas saludables',pk:'x3u — $2.300',ps:'x3u — $2.300',img:'images/pepas.jpg'},
-    {n:'Alfajor marino',pk:'$4.200',ps:'$4.200'},
-    {n:'Alfajor corazón',pk:'$4.200',ps:'$4.200'},
     {n:'Tubo',pk:'$4.500',ps:'$3.500',img:'images/tubo.jpg'},
-    {n:'Alfajor de chocolate (dulce de leche, frutos rojos o marroc)',pk:'$4.500',ps:'$3.500',img:'images/alfajor-chocolate.jpg'},
+    {n:'Alfajor de chocolate',img:'images/alfajor-chocolate.jpg',opts:[
+      {o:'Dulce de leche, frutos rojos o marroc',pk:'$4.500',ps:'$3.500'},
+      {o:'Corazón',pk:'$4.200',ps:'$4.200'},
+      {o:'Marino',pk:'$4.200',ps:'$4.200'},
+      {o:'Havanna keto',pk:'$3.200',ps:'$3.200'},
+      {o:'Bariloche keto',pk:'$3.200',ps:'$3.200'}
+    ]},
     {n:'Alfajor tipo maicena',pk:'$3.000',ps:'$3.000',img:'images/alfajor-maicena.jpg'},
     {n:'Almendrado',pk:'$3.800',ps:'$3.200',img:'images/almendrado.jpg'},
-    {n:'Havanna keto',pk:'$3.200',ps:'$3.200'},
-    {n:'Bariloche keto',pk:'$3.200',ps:'$3.200'},
     {n:'Torta 1,5 kg bizcochelo',pk:'$65.000',ps:'$65.000',esp:true,img:'images/torta-bicolor.jpg'},
     {n:'Torta sablée',pk:'$42.000',ps:'$39.000',esp:true,img:'images/torta-sablee.jpg'},
     {n:'Lemon pie',pk:'$30.000',ps:'$27.000',esp:true,img:'images/lemon-pie.jpg'},
@@ -715,35 +718,49 @@ function finalizarPedido(){
 renderCart();
 
 
+function variantsHTML(name, pk, ps, esp){
+  const nEsc = name.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+  const ketoBtn = pk ? `
+          <button class="variant-btn variant-keto" onclick="addCart('${nEsc}','Keto','${pk}',${esp||false})">
+            <span class="variant-label">Keto</span>
+            <span class="variant-price">${pk}</span>
+            <span class="variant-desc">Harina de almendras 100% pura</span>
+          </button>` : '';
+  const saludBtn = ps ? `
+          <button class="variant-btn variant-salud" onclick="addCart('${nEsc}','Saludable','${ps}',${esp||false})">
+            <span class="variant-label">Saludable</span>
+            <span class="variant-price">${ps}</span>
+            <span class="variant-desc">Harina de almendras con 70% de pureza</span>
+          </button>` : '';
+  return ketoBtn + saludBtn;
+}
+
 function renderProds(cat){
   const grid = document.getElementById('prodGrid');
   grid.innerHTML = '';
   (PRODS[cat]||[]).forEach(p=>{
     const d = document.createElement('div');
     d.className = 'pcard';
-    const nEsc = p.n.replace(/'/g,"\\'");
-    const ketoBtn = p.pk ? `
-          <button class="variant-btn variant-keto" onclick="addCart('${nEsc}','Keto','${p.pk}',${p.esp||false})">
-            <span class="variant-label">Keto</span>
-            <span class="variant-price">${p.pk}</span>
-            <span class="variant-desc">Harina de almendras 100% pura</span>
-          </button>` : '';
-    const saludBtn = p.ps ? `
-          <button class="variant-btn variant-salud" onclick="addCart('${nEsc}','Saludable','${p.ps}',${p.esp||false})">
-            <span class="variant-label">Saludable</span>
-            <span class="variant-price">${p.ps}</span>
-            <span class="variant-desc">Harina de almendras con 70% de pureza</span>
-          </button>` : '';
-    const variantsClass = (p.pk && p.ps) ? 'pcard-variants' : 'pcard-variants single';
+    const first = p.opts ? p.opts[0] : p;
+    const optSelect = p.opts ? `
+        <select class="pcard-opt" aria-label="Elegí la opción">${p.opts.map((o,i)=>`<option value="${i}">${o.o}</option>`).join('')}</select>` : '';
     d.innerHTML = `
       ${p.img ? `<img class="pcard-img" src="${p.img}" alt="${p.n}" loading="lazy">` : ''}
       <div class="pcard-body">
         <div class="pcard-top">
           <span class="pcard-name">${p.n}</span>
         </div>
-        ${p.esp ? '<div><span class="badge-48">⏰ 48 hs anticipación</span></div>' : ''}
-        <div class="${variantsClass}">${ketoBtn}${saludBtn}</div>
+        ${p.esp ? '<div><span class="badge-48">⏰ 48 hs anticipación</span></div>' : ''}${optSelect}
+        <div class="pcard-variants"></div>
       </div>`;
+    const vars = d.querySelector('.pcard-variants');
+    const paint = o => {
+      const name = p.opts ? p.n + ' — ' + o.o : p.n;
+      vars.className = (o.pk && o.ps) ? 'pcard-variants' : 'pcard-variants single';
+      vars.innerHTML = variantsHTML(name, o.pk, o.ps, p.esp);
+    };
+    paint(first);
+    if(p.opts) d.querySelector('.pcard-opt').addEventListener('change',e=>paint(p.opts[e.target.value]));
     grid.appendChild(d);
   });
 }
